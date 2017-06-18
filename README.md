@@ -1,3 +1,6 @@
+# plutonium-domain-value
+Generic scientific attribute input and display.
+
 # \<plutonium-domain-value\>
 
 Field for display and edit value with unit of domain.
