@@ -2,7 +2,7 @@
   "name": "plutonium-domain-value",
   "description": "Field for display and edit value with unit of domain.",
   "main": "plutonium-domain-value.html",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "authors": [
     "lordoftheflies <laszlo.hegedus@cherubits.hu> (https://github.com/lordoftheflies)"
   ],
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers",
+    "iron-component-page": "PolymerElements/iron-component-page",
     "web-component-tester": "Polymer/web-component-tester",
     "webcomponentsjs": "webcomponents/webcomponentsjs"
   },
