@@ -66,20 +66,21 @@
         <plutonium-domain-value-validator></plutonium-domain-value-validator>
         <paper-input-container class="input-without-underline">
             <form is="iron-form" id="valueForm" class="layout horizontal">
+                <template is="dom-repeat" items="[[parameters]]" as="parameter">
+                    <template is="dom-if" if="[[!_isChoice]]">
+                        <paper-input name="[[parameter.pname]]" slot="input" label="[[parameter.pname]]" disabled="[[disabled]]" type="[[parameter.ptype]]" min="[[min]]" max="[[max]]" class="paper-input-input input-with-underline"></paper-input>
+                    </template>
+                    <template is="dom-if" if="[[_determineChoice(parameter.ptype)]]">
+                        <paper-dropdown-menu slot="input" label="[[parameter.pname]]" name="[[parameter.pname]]" class="paper-input-input input-with-underline" disabled="[[disabled]]">
+                            <paper-listbox slot="dropdown-content" class="dropdown-content" attr-for-selected="name">
+                                <template is="dom-repeat" items="[[choices]]" as="dataChoice">
+                                    <paper-item name="[[dataChoice]]">[[dataChoice]]</paper-item>
+                                </template>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+                    </template>
 
-                <template is="dom-if" if="[[!_isChoice]]">
-                    <paper-input name="data" slot="input" label="[[label]]" disabled="[[disabled]]" type="[[type]]" min="[[min]]" max="[[max]]" class="paper-input-input input-with-underline" value="{{data}}"></paper-input>
                 </template>
-                <template is="dom-if" if="[[_isChoice]]">
-                    <paper-dropdown-menu slot="input" label="[[label]]" name="data" class="paper-input-input input-with-underline" disabled="[[disabled]]">
-                        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{data}}" attr-for-selected="name">
-                            <template is="dom-repeat" items="[[choices]]" as="dataChoice">
-                                <paper-item name="[[dataChoice]]">[[dataChoice]]</paper-item>
-                            </template>
-                        </paper-listbox>
-                    </paper-dropdown-menu>
-                </template>
-
                 <template is="dom-if" if="[[!noUnit]]">
                     <paper-dropdown-menu slot="suffix" label="Unit" name="unit" class="input-with-underline" disabled="[[disabled]]">
                         <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{unit}}" attr-for-selected="name">
@@ -90,8 +91,10 @@
                     </paper-dropdown-menu>
                 </template>
 
-                <paper-icon-button icon="shared-icons:clear" on-tap="_clear" title="Clear input" hidden="[[disabled]]"></paper-icon-button>
-                <paper-icon-button icon="shared-icons:info" on-tap="_toggleHelp" title="Help information"></paper-icon-button>
+                <div>
+                    <paper-icon-button icon="shared-icons:clear" on-tap="_clear" title="Clear input" hidden="[[disabled]]"></paper-icon-button>
+                    <paper-icon-button icon="shared-icons:info" on-tap="_toggleHelp" title="Help information"></paper-icon-button>
+                </div>
             </form>
         </paper-input-container>
         <iron-collapse id="collapse">
@@ -198,6 +201,10 @@
                  */
                 unit: {
                     type: String,
+                    notify: true
+                },
+                parameters: {
+                    type: Array,
                     notify: true
                 },
                 /**
