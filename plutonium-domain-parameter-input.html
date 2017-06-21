@@ -1,0 +1,146 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
+<link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="../iron-form/iron-form.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../iron-validatable-behavior/iron-validatable-behavior.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-collapse/iron-collapse.html">
+<link rel="import" href="plutonium-domain-value-validator.html">
+<link rel="import" href="shared-icons.html">
+
+
+<dom-module id="plutonium-domain-parameter-input">
+    <template>
+        <style include="iron-flex">
+            :host {
+                display: block;
+                margin-right: 16px;
+            }
+
+
+        </style>
+        <template is="dom-if" if$="[[!_determineChoice(type)]]">
+            <paper-input
+                    name="[[name]]"
+                    slot="input"
+                    label="[[name]]"
+                    disabled="[[disabled]]"
+                    type="[[type]]"
+                    min="[[min]]"
+                    max="[[max]]"
+                    title$="[[_tooltip]]"
+                    value="{{value}}"
+                    class="paper-input-input input-with-underline"></paper-input>
+        </template>
+        <template is="dom-if" if$="[[_determineChoice(type)]]">
+            <paper-dropdown-menu
+                    slot="input"
+                    label="[[name]]"
+                    name="[[name]]"
+                    title$="[[_tooltip]]"
+                    value="{{value}}"
+                    class="paper-input-input input-with-underline"
+                    disabled="[[disabled]]">
+                <paper-listbox slot="dropdown-content" class="dropdown-content" attr-for-selected="name">
+                    <template is="dom-repeat" items="[[choices]]" as="dataChoice">
+                        <paper-item name="[[dataChoice]]">[[dataChoice]]</paper-item>
+                    </template>
+                </paper-listbox>
+            </paper-dropdown-menu>
+        </template>
+    </template>
+
+    <script>
+        /**
+         * `<plutonium-domain-value-input>` injects a healthy dose of awesome into your page.
+         *
+         * In typical use, just slap some `<plutonium-domain-value-input>` at the top of your body:
+         *
+         * <body>
+         * <plutonium-domain-value-input></plutonium-domain-value-input>
+
+         * Wham! It's all awesome now!
+         *
+         * @demo demo/input-index.html  Input demonstration.
+         */
+        Polymer({
+            is: 'plutonium-domain-parameter-input',
+            behaviors: [
+                Polymer.IronFormElementBehavior,
+//                Polymer.IronValidatableBehavior
+            ],
+            properties: {
+                /**
+                 * Type of the data. Could be: "string", "number", "enumeration"
+                 *
+                 * @type {string}
+                 */
+                type: {
+                    type: String,
+                    notify: true,
+                },
+                /**
+                 * Minimal value. Only useable when type is number.
+                 *
+                 * @type {number}
+                 */
+                min: {
+                    type: Number,
+                    notify: true,
+                },
+                /**
+                 * Maximal value. Only useable when type is number
+                 *
+                 * @type {number}
+                 */
+                max: {
+                    type: Number,
+                    notify: true,
+                },
+                /**
+                 * List of chooseable value codes. Only useable when type is enumeration.
+                 *
+                 * @type {Array<string>}
+                 */
+                choices: {
+                    type: Array,
+                    notify: true
+                },
+
+                _tooltip: {
+                    type: String,
+                    notify: true,
+                },
+            },
+            observers: [
+                '_computeItemInfoForSimple(name, type, min, max)',
+                '_computeItemInfoForEnum(name, type, choices)'
+            ],
+            /**
+             * Determine enumeration.
+             * @param type Type of the attribute.
+             * @returns {boolean} True of it is enumeration.
+             * @private
+             */
+            _determineChoice: function (type) {
+                return type === 'enumeration';
+            },
+            _computeItemInfoForSimple: function (name, type, min, max) {
+                console.debug(this.is + '[' + this.name + ']', 'compute ' + type + ' parameter info');
+                this._tooltip = type + ': '
+                    + (type === 'number' ? (min + ' < ' + name + ' < ' + max) : '')
+                    + ((type === 'text') ? (name + ' is sting based') : '');
+            },
+            _computeItemInfoForEnum: function (name, type, choices) {
+                console.debug(this.is + '[' + this.name + ']', 'compute ' + type + ' parameter info');
+                this._tooltip = type + ': ' + (type === 'enumeration' ? name + ' in ' +  JSON.stringify(choices) : '') + '\n';
+            }
+
+        });
+    </script>
+</dom-module>

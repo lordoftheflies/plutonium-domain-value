@@ -11,12 +11,13 @@
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-collapse/iron-collapse.html">
 <link rel="import" href="plutonium-domain-value-validator.html">
+<link rel="import" href="plutonium-domain-parameter-input.html">
 <link rel="import" href="shared-icons.html">
 
 
 <dom-module id="plutonium-domain-value-input">
     <template>
-        <style include="iron-flex">
+        <style include="iron-flex iron-flex-alignment">
             :host {
                 display: block;
 
@@ -38,65 +39,63 @@
                 margin-right: 16px;
             }
 
-            .input-without-underline {
-                --paper-input-container-underline: {
-                    display: none;
-                };
-                --paper-input-container-underline-focus: {
-                    display: none;
-                };
-                --paper-input-container-underline-disabled: {
-                    display: none;
-                };
+            .parameter-content {
+                display: block;
             }
 
-            .input-with-underline {
-                --paper-input-container-underline: {
-                    display: inline-block !important;
-                };
-                --paper-input-container-underline-focus: {
-                    display: inline-block !important;
-                };
-                --paper-input-container-underline-disabled: {
-                    display: inline-block !important;
-                };
+            /*.input-without-underline {*/
+                /*--paper-input-container-underline: {*/
+                    /*display: none;*/
+                /*};*/
+                /*--paper-input-container-underline-focus: {*/
+                    /*display: none;*/
+                /*};*/
+                /*--paper-input-container-underline-disabled: {*/
+                    /*display: none;*/
+                /*};*/
+            /*}*/
+
+            /*.input-with-underline {*/
+                /*--paper-input-container-underline: {*/
+                    /*display: inline-block !important;*/
+                /*};*/
+                /*--paper-input-container-underline-focus: {*/
+                    /*display: inline-block !important;*/
+                /*};*/
+                /*--paper-input-container-underline-disabled: {*/
+                    /*display: inline-block !important;*/
+                /*};*/
+            /*}*/
+
+            div.value-form {
+                display: inline-block;
+                margin-top: 8px;
             }
 
         </style>
         <plutonium-domain-value-validator></plutonium-domain-value-validator>
-        <paper-input-container class="input-without-underline">
-            <form is="iron-form" id="valueForm" class="layout horizontal">
-                <template is="dom-repeat" items="[[parameters]]" as="parameter">
-                    <template is="dom-if" if="[[!_isChoice]]">
-                        <paper-input name="[[parameter.pname]]" slot="input" label="[[parameter.pname]]" disabled="[[disabled]]" type="[[parameter.ptype]]" min="[[min]]" max="[[max]]" class="paper-input-input input-with-underline"></paper-input>
+        <paper-input-container class="input-without-underline layout horizontal">
+            <label slot="label">[[label]]</label>
+            <div slot="input" class="layout horizontal">
+                <div is="iron-form" id="valueForm" class="flex layout horizontal value-form">
+                    <template is="dom-repeat" items="[[parameters]]" as="parameter">
+                        <plutonium-domain-parameter-input
+                                name="[[parameter.pname]]"
+                                label="[[parameter.pname]]"
+                                value="[[parameter.pdefault]]"
+                                type="[[parameter.ptype]]">
+                        </plutonium-domain-parameter-input>
                     </template>
-                    <template is="dom-if" if="[[_determineChoice(parameter.ptype)]]">
-                        <paper-dropdown-menu slot="input" label="[[parameter.pname]]" name="[[parameter.pname]]" class="paper-input-input input-with-underline" disabled="[[disabled]]">
-                            <paper-listbox slot="dropdown-content" class="dropdown-content" attr-for-selected="name">
-                                <template is="dom-repeat" items="[[choices]]" as="dataChoice">
-                                    <paper-item name="[[dataChoice]]">[[dataChoice]]</paper-item>
-                                </template>
-                            </paper-listbox>
-                        </paper-dropdown-menu>
-                    </template>
-
-                </template>
-                <template is="dom-if" if="[[!noUnit]]">
-                    <paper-dropdown-menu slot="suffix" label="Unit" name="unit" class="input-with-underline" disabled="[[disabled]]">
-                        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{unit}}" attr-for-selected="name">
-                            <template is="dom-repeat" items="[[scale]]" as="unitChoice">
-                                <paper-item name="[[unitChoice]]">[[unitChoice]]</paper-item>
-                            </template>
-                        </paper-listbox>
-                    </paper-dropdown-menu>
-                </template>
+                    <content select="[parameter]" class="parameter-content"></content>
+                </div>
 
                 <div>
                     <paper-icon-button icon="shared-icons:clear" on-tap="_clear" title="Clear input" hidden="[[disabled]]"></paper-icon-button>
                     <paper-icon-button icon="shared-icons:info" on-tap="_toggleHelp" title="Help information"></paper-icon-button>
-                    <content></content>
+                    <content select="[action]"></content>
                 </div>
-            </form>
+            </div>
+
         </paper-input-container>
         <iron-collapse id="collapse">
             <p>[[title]]</p>
