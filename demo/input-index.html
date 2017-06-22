@@ -25,68 +25,65 @@
     <demo-snippet>
         <template>
             <form is="iron-form" id="form">
-                <plutonium-domain-value-input
-                        name="test_interval"
-                        label="Frekvency"
-                        unit="MHz"
-                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque vulputate, est leo rhoncus quam, at aliquam purus sem a orci. Vivamus mattis, urna nec vehicula tristique, ligula leo venenatis nulla, in blandit sapien risus a odio. Nam odio lacus, consectetur vitae nisi non, suscipit cursus orci. Suspendisse aliquet molestie interdum. Donec rhoncus mauris libero, sed maximus eros sollicitudin nec. Nulla commodo velit at consectetur scelerisque. Cras convallis nec est eget cursus."
-                        data="200"
-                        type="number"
-                        min="10"
-                        max="1000"
-                        parameters='[{"ptype": "text", "pname": "value", "pdefault": 1.0}]'
-                        scale='["GHz", "MHz", "KHz", "Hz"]'></plutonium-domain-value-input>
+                <!--<plutonium-domain-value-input-->
+                        <!--name="test_interval"-->
+                        <!--label="Frekvency"-->
+                        <!--unit="MHz"-->
+                        <!--title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellent."-->
+                        <!--data="200"-->
+                        <!--type="number"-->
+                        <!--min="10"-->
+                        <!--max="1000"-->
+                        <!--parameters='[{"ptype": "text", "pname": "value", "pdefault": 1.0}]'-->
+                        <!--scale='["GHz", "MHz", "KHz", "Hz"]'></plutonium-domain-value-input>-->
 
-                <plutonium-domain-value-input
-                        name="test_string"
-                        label="Cheers"
-                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque vulputate, est leo rhoncus quam, at aliquam purus sem a orci. Vivamus mattis, urna nec vehicula tristique, ligula leo venenatis nulla, in blandit sapien risus a odio. Nam odio lacus, consectetur vitae nisi non, suscipit cursus orci. Suspendisse aliquet molestie interdum. Donec rhoncus mauris libero, sed maximus eros sollicitudin nec. Nulla commodo velit at consectetur scelerisque. Cras convallis nec est eget cursus."
-                        no-unit
-                        data="hello"
-                        parameters='[{"ptype": "text", "pname": "prefix", "pdefault": 1.0}, {"ptype": "enumeration", "pname": "unit", "pdefault": 1}, {"ptype": "number", "pname": "value", "pdefault": 1.0}]'
-                        type="string"></plutonium-domain-value-input>
+                <!--<plutonium-domain-value-input-->
+                        <!--name="test_string"-->
+                        <!--label="Cheers"-->
+                        <!--title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellent."-->
+                        <!--no-unit-->
+                        <!--data="hello"-->
+                        <!--parameters='[{"ptype": "text", "pname": "prefix", "pdefault": 1.0}, {"ptype": "enumeration", "pname": "unit", "pdefault": 1}, {"ptype": "number", "pname": "value", "pdefault": 1.0}]'-->
+                        <!--type="string"></plutonium-domain-value-input>-->
 
-                <plutonium-domain-value-input
-                        name="test_number_enum"
-                        label="Amplitude"
-                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque vulputate, est leo rhoncus quam, at aliquam purus sem a orci. Vivamus mattis, urna nec vehicula tristique, ligula leo venenatis nulla, in blandit sapien risus a odio. Nam odio lacus, consectetur vitae nisi non, suscipit cursus orci. Suspendisse aliquet molestie interdum. Donec rhoncus mauris libero, sed maximus eros sollicitudin nec. Nulla commodo velit at consectetur scelerisque. Cras convallis nec est eget cursus."
-                        choices='[1, 10, 100, 1000]'
-                        data="100"
-                        unit="KHz"
-                        type="enumeration"
-                        parameters='[{"ptype": "text", "pname": "value", "pdefault": 2.0}]'
-                        scale='["GHz", "MHz", "KHz", "Hz"]'></plutonium-domain-value-input>
+                <!--<plutonium-domain-value-input-->
+                        <!--name="test_number_enum"-->
+                        <!--label="Amplitude"-->
+                        <!--title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque."-->
+                        <!--choices='[1, 10, 100, 1000]'-->
+                        <!--data="100"-->
+                        <!--unit="KHz"-->
+                        <!--type="enumeration"-->
+                        <!--parameters='[{"ptype": "text", "pname": "value", "pdefault": 2.0}]'-->
+                        <!--scale='["GHz", "MHz", "KHz", "Hz"]'></plutonium-domain-value-input>-->
 
-                <plutonium-domain-value-input
-                        name="test_string_enum"
-                        label="Octet"
-                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque vulputate, est leo rhoncus quam, at aliquam purus sem a orci. Vivamus mattis, urna nec vehicula tristique, ligula leo venenatis nulla, in blandit sapien risus a odio. Nam odio lacus, consectetur vitae nisi non, suscipit cursus orci. Suspendisse aliquet molestie interdum. Donec rhoncus mauris libero, sed maximus eros sollicitudin nec. Nulla commodo velit at consectetur scelerisque. Cras convallis nec est eget cursus."
-                        choices='["HI", "LO"]'
-                        data="HI"
-                        parameters='[{"ptype": "text", "pname": "value", "pdefault": 1.0}]'
-                        no-unit
-                        type="enumeration"></plutonium-domain-value-input>
+                <!--<plutonium-domain-value-input-->
+                        <!--name="test_string_enum"-->
+                        <!--label="Octet"-->
+                        <!--title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque ."-->
+                        <!--choices='["HI", "LO"]'-->
+                        <!--data="HI"-->
+                        <!--parameters='[{"ptype": "text", "pname": "value", "pdefault": 1.0}]'-->
+                        <!--no-unit-->
+                        <!--type="enumeration"></plutonium-domain-value-input>-->
 
 
-                <plutonium-domain-value-input
-                        name="test_interval_dis"
-                        label="Frekvency"
-                        unit="MHz"
-                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque vulputate, est leo rhoncus quam, at aliquam purus sem a orci. Vivamus mattis, urna nec vehicula tristique, ligula leo venenatis nulla, in blandit sapien risus a odio. Nam odio lacus, consectetur vitae nisi non, suscipit cursus orci. Suspendisse aliquet molestie interdum. Donec rhoncus mauris libero, sed maximus eros sollicitudin nec. Nulla commodo velit at consectetur scelerisque. Cras convallis nec est eget cursus."
-                        data="200"
-                        type="number"
-                        min="10"
-                        disabled
-                        max="1000"
-                        scale='["GHz", "MHz", "KHz", "Hz"]'></plutonium-domain-value-input>
+                <!--<plutonium-domain-value-input-->
+                        <!--name="test_interval_dis"-->
+                        <!--label="Frekvency"-->
+                        <!--unit="MHz"-->
+                        <!--title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque ."-->
+                        <!--data="200"-->
+                        <!--type="number"-->
+                        <!--min="10"-->
+                        <!--disabled-->
+                        <!--max="1000"-->
+                        <!--scale='["GHz", "MHz", "KHz", "Hz"]'></plutonium-domain-value-input>-->
 
                 <plutonium-domain-value-input
                         name="test_string_dis"
                         label="Cheers"
-                        disabled
-                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque vulputate, est leo rhoncus quam, at aliquam purus sem a orci. Vivamus mattis, urna nec vehicula tristique, ligula leo venenatis nulla, in blandit sapien risus a odio. Nam odio lacus, consectetur vitae nisi non, suscipit cursus orci. Suspendisse aliquet molestie interdum. Donec rhoncus mauris libero, sed maximus eros sollicitudin nec. Nulla commodo velit at consectetur scelerisque. Cras convallis nec est eget cursus."
-                        parameters='[{"ptype": "text", "pname": "value", "pdefault": 1.0}]'
-                        no-unit
+                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque vulputate."
                         data="hello"
                         type="string"
                         scale='["GHz", "MHz", "KHz", "Hz"]'>
@@ -95,6 +92,21 @@
                     <plutonium-domain-parameter-input parameter type="enumeration" name="declarative_param_enum" choices='["a", "b", "c"]'></plutonium-domain-parameter-input>
                     <paper-button action raised>Test action</paper-button>
                 </plutonium-domain-value-input>
+
+                <!--<plutonium-domain-value-input-->
+                        <!--name="test_string_dis"-->
+                        <!--label="Cheers"-->
+                        <!--disabled-->
+                        <!--title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec leo sagittis, convallis lacus ut, ullamcorper tortor. Mauris mollis, nisi vitae pellentesque vulputate."-->
+                        <!--data="hello"-->
+                        <!--type="string"-->
+                        <!--scale='["GHz", "MHz", "KHz", "Hz"]'>-->
+                    <!--<plutonium-domain-parameter-input parameter type="text" name="declarative_param_text"></plutonium-domain-parameter-input>-->
+                    <!--<plutonium-domain-parameter-input parameter type="number" name="declarative_param_number" min="10" max="100"></plutonium-domain-parameter-input>-->
+                    <!--<plutonium-domain-parameter-input parameter type="enumeration" name="declarative_param_enum" choices='["a", "b", "c"]'></plutonium-domain-parameter-input>-->
+                    <!--<paper-button action raised>Test action</paper-button>-->
+                <!--</plutonium-domain-value-input>-->
+
             </form>
             <p id="results"></p>
             <button onclick="onclicksubmit()">Submit</button>

@@ -68,7 +68,7 @@
             /*}*/
 
             div.value-form {
-                display: inline-block;
+                display: block;
                 margin-top: 8px;
             }
 
@@ -76,26 +76,17 @@
         <plutonium-domain-value-validator></plutonium-domain-value-validator>
         <paper-input-container class="input-without-underline layout horizontal">
             <label slot="label">[[label]]</label>
-            <div slot="input" class="layout horizontal">
-                <div is="iron-form" id="valueForm" class="flex layout horizontal value-form">
-                    <template is="dom-repeat" items="[[parameters]]" as="parameter">
-                        <plutonium-domain-parameter-input
-                                name="[[parameter.pname]]"
-                                label="[[parameter.pname]]"
-                                value="[[parameter.pdefault]]"
-                                type="[[parameter.ptype]]">
-                        </plutonium-domain-parameter-input>
-                    </template>
+            <div slot="input" class="paper-input-input layout horizontal">
+                <form is="iron-form" id="valueForm" class="flex layout horizontal value-form">
                     <content select="[parameter]" class="parameter-content"></content>
-                </div>
-
+                </form>
                 <div>
                     <paper-icon-button icon="shared-icons:clear" on-tap="_clear" title="Clear input" hidden="[[disabled]]"></paper-icon-button>
                     <paper-icon-button icon="shared-icons:info" on-tap="_toggleHelp" title="Help information"></paper-icon-button>
                     <content select="[action]"></content>
                 </div>
             </div>
-
+            <paper-input-error slot="add-on">Value is invalid.</paper-input-error>
         </paper-input-container>
         <iron-collapse id="collapse">
             <p>[[title]]</p>
@@ -156,24 +147,6 @@
                  */
                 title: {
                     type: String,
-                    notify: true,
-                },
-                /**
-                 * Minimal value. Only useable when type is number.
-                 *
-                 * @type {number}
-                 */
-                min: {
-                    type: Number,
-                    notify: true,
-                },
-                /**
-                 * Maximal value. Only useable when type is number
-                 *
-                 * @type {number}
-                 */
-                max: {
-                    type: Number,
                     notify: true,
                 },
                 /**

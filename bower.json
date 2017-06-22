@@ -2,7 +2,7 @@
   "name": "plutonium-domain-value",
   "description": "Field for display and edit value with unit of domain.",
   "main": "plutonium-domain-value.html",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "authors": [
     "lordoftheflies <laszlo.hegedus@cherubits.hu> (https://github.com/lordoftheflies)"
   ],
